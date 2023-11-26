@@ -1,0 +1,72 @@
+
+// Forex Robot Easy Team
+// Developer's site: forexroboteasy.com
+// Program name: Bonnitta EA MT5
+
+// Function to set pending orders at specified price levels
+void SetPendingOrders(int type, double priceLevel) {
+    // Check if the market has reached the specified price level
+    if (MarketInfo(Symbol(), MODE_BID) >= priceLevel) {
+        // Execute the pending order based on the specified type
+        switch (type) {
+            case OP_BUYLIMIT:
+                // Place a buy limit order at the specified price level
+                OrderSend(Symbol(), OP_BUYLIMIT, 0.01, priceLevel, 3, 0, 0, 'Buy Limit', 0, 0, Green);
+                break;
+            case OP_SELLLIMIT:
+                // Place a sell limit order at the specified price level
+                OrderSend(Symbol(), OP_SELLLIMIT, 0.01, priceLevel, 3, 0, 0, 'Sell Limit', 0, 0, Red);
+                break;
+            case OP_BUYSTOP:
+                // Place a buy stop order at the specified price level
+                OrderSend(Symbol(), OP_BUYSTOP, 0.01, priceLevel, 3, 0, 0, 'Buy Stop', 0, 0, Blue);
+                break;
+            case OP_SELLSTOP:
+                // Place a sell stop order at the specified price level
+                OrderSend(Symbol(), OP_SELLSTOP, 0.01, priceLevel, 3, 0, 0, 'Sell Stop', 0, 0, Yellow);
+                break;
+        }
+    }
+}
+
+// Function to calculate the values of the custom indicator
+double CalculateCustomIndicator() {
+    // Your secretive custom indicator calculation code here
+    return 0.0; // Placeholder value, replace with actual calculation result
+}
+
+// Function to identify support and resistance levels based on historical price data
+void IdentifySupportResistanceLevels() {
+    // Your support and resistance level identification code here
+}
+
+// Function to analyze market data and generate trading signals
+void AnalyzeMarketData() {
+    // Your advanced trading algorithm code here
+}
+
+// Function to simulate various market conditions and test algorithm performance
+void PerformStressTesting() {
+    // Your stress testing code here
+}
+
+// Main function to execute the trading robot
+void OnTick() {
+    // Set pending orders at specified price levels
+    SetPendingOrders(OP_BUYLIMIT, 1.1000);
+    SetPendingOrders(OP_SELLLIMIT, 1.1200);
+    SetPendingOrders(OP_BUYSTOP, 1.1300);
+    SetPendingOrders(OP_SELLSTOP, 1.0900);
+
+    // Calculate the values of the custom indicator
+    double indicatorValue = CalculateCustomIndicator();
+
+    // Identify support and resistance levels
+    IdentifySupportResistanceLevels();
+
+    // Analyze market data and generate trading signals
+    AnalyzeMarketData();
+
+    // Perform stress testing and test algorithm performance
+    PerformStressTesting();
+}
